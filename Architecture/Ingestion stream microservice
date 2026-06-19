@@ -1,42 +1,43 @@
-"""
-CORE MODULE 1: MULTI-SOURCE DISASTER DATA FUSION ENGINE
-Path: apps/ingestion-service/main.py
-"""
-import time
-from typing import List, Tuple
-from fastapi import FastAPI, HTTPException, status
-from pydantic import BaseModel, Field, field_validator
+```mermaid
+graph TD
+    %% Data Sources
+    subgraph Data Sources
+        A[Satellite SAR / Landsat Imagery]
+        B[IoT Hydro & Seismic Sensors]
+        C[Emergency Text / Social Streams]
+    end
 
-app = FastAPI(title="Data Fusion Engine Layer", version="1.0.0")
+    %% Ingestion & Streaming
+    subgraph Core Stream Ingestion
+        D[FastAPI Ingestion Endpoint]
+        E[Apache Kafka Event Broker]
+        F[Apache Flink Real-Time Processor]
+    end
 
-class IngressPayload(BaseModel):
-    source_id: str = Field(..., example="SENTINEL_2_ORBITAL_LOOP")
-    hazard_type: str = Field(..., example="FlashFlood")
-    coordinates: Tuple[float, float] = Field(..., example=(22.5726, 88.4333))
-    telemetry_floats: List[float] = Field(default=[], description="Sensor arrays [river_gauge, soil_moisture]")
-    unstructured_text: str = Field(default="", description="Raw social media logs or emergency transcripts")
+    %% Storage & Compute
+    subgraph Core Compute Matrix
+        G[(Qdrant Vector DB)]
+        H[(Neo4j Knowledge Graph)]
+        I[PyTorch Advanced ML Engine]
+    end
 
-    @field_validator('coordinates')
-    @classmethod
-    def verify_geospatial_bounds(cls, v: Tuple[float, float]) -> Tuple[float, float]:
-        lat, lon = v
-        if not (-90 <= lat <= 90) or not (-180 <= lon <= 180):
-            raise ValueError("Geospatial coordinates must follow strict EPSG:4326 parameters.")
-        return v
+    %% Presentation Layer
+    subgraph Command Center UI
+        J[Next.js Core App]
+        K[Mapbox GL Spatial Engine]
+        L[CesiumJS 3D Globe]
+    end
 
-@app.post("/api/v1/fusion/stream", status_code=status.HTTP_202_ACCEPTED)
-async def ingest_multimodal_stream(payload: IngressPayload):
-    """
-    Ingests highly disparate data formats and routes them to memory buffers.
-    In production, this publishes straight into Apache Kafka topics.
-    """
-    try:
-        # Log injection internally for tracking
-        print(f"[STREAM INGEST] Source {payload.source_id} successfully mapped hazard: {payload.hazard_type}")
-        return {
-            "ingest_status": "SUCCESS",
-            "assigned_partition_timestamp": time.time(),
-            "payload_checksum_verified": True
-        }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Pipeline Write Collision: {str(e)}")
+    %% Layout Interconnections
+    A --> D
+    B --> D
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    F --> H
+    G --> I
+    H --> I
+    I --> J
+    J --> K
+    J --> L
