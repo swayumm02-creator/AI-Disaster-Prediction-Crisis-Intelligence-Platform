@@ -1,43 +1,18 @@
 ```mermaid
 graph TD
-    %% Data Sources
-    subgraph Data Sources
-        A[Satellite SAR / Landsat Imagery]
-        B[IoT Hydro & Seismic Sensors]
-        C[Emergency Text / Social Streams]
-    end
+    A[Satellite SAR / Landsat Imagery] --> D[FastAPI Ingestion Endpoint]
+    B[IoT Hydro & Seismic Sensors] --> D
+    C[Emergency Text / Social Streams] --> D
 
-    %% Ingestion & Streaming
-    subgraph Core Stream Ingestion
-        D[FastAPI Ingestion Endpoint]
-        E[Apache Kafka Event Broker]
-        F[Apache Flink Real-Time Processor]
-    end
+    D --> E[Apache Kafka Event Broker]
+    E --> F[Apache Flink Real-Time Processor]
 
-    %% Storage & Compute
-    subgraph Core Compute Matrix
-        G[(Qdrant Vector DB)]
-        H[(Neo4j Knowledge Graph)]
-        I[PyTorch Advanced ML Engine]
-    end
+    F --> G[(Qdrant Vector DB)]
+    F --> H[(Neo4j Knowledge Graph)]
 
-    %% Presentation Layer
-    subgraph Command Center UI
-        J[Next.js Core App]
-        K[Mapbox GL Spatial Engine]
-        L[CesiumJS 3D Globe]
-    end
-
-    %% Layout Interconnections
-    A --> D
-    B --> D
-    C --> D
-    D --> E
-    E --> F
-    F --> G
-    F --> H
-    G --> I
+    G --> I[PyTorch Advanced ML Engine]
     H --> I
-    I --> J
-    J --> K
-    J --> L
+
+    I --> J[Next.js Core App]
+    J --> K[Mapbox GL Spatial Engine]
+    J --> L[CesiumJS 3D Globe]
