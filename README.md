@@ -1,4 +1,4 @@
-# 🌍 AI Disaster Prediction & Crisis Intelligence Platform
+#  AI Disaster Prediction & Crisis Intelligence Platform
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
@@ -8,46 +8,26 @@
 ![GIS](https://img.shields.io/badge/Geospatial%20AI-GIS-purple)
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
-## 🚀 Overview
+##  Overview
 
 An AI-powered disaster prediction and crisis intelligence platform designed to forecast natural disasters, assess risks, analyze satellite imagery, generate real-time alerts, and support emergency response operations.
 
 The platform leverages Machine Learning, Computer Vision, Geospatial Analytics, and Real-Time Data Processing to improve disaster preparedness and reduce loss of life and property.
 
----
+##  Features
 
-## ✨ Features
+-  Flood Prediction System
+-  Cyclone Risk Forecasting
+-  Satellite Image Analysis
+-  Geospatial Risk Heatmaps
+-  Real-Time Alert System
+-  Crisis Intelligence Dashboard
+-  AI Risk Assessment Engine
+-  Emergency Resource Coordination
+-  Predictive Analytics
+-  Cloud-Ready Deployment
 
-- 🌊 Flood Prediction System
-- 🌪 Cyclone Risk Forecasting
-- 🛰 Satellite Image Analysis
-- 📍 Geospatial Risk Heatmaps
-- 🚨 Real-Time Alert System
-- 📊 Crisis Intelligence Dashboard
-- 🤖 AI Risk Assessment Engine
-- 🏥 Emergency Resource Coordination
-- 📈 Predictive Analytics
-- ☁ Cloud-Ready Deployment
-
----
-
-## 🏗 Architecture
-
-Data Sources
-↓
-Data Processing Layer
-↓
-AI Prediction Engine
-↓
-Risk Assessment Module
-↓
-Alert Generation System
-↓
-Dashboard & Crisis Intelligence Center
-
----
-
-## 🛠 Tech Stack
+##  Tech Stack
 
 ### Artificial Intelligence
 - Python
@@ -76,9 +56,8 @@ Dashboard & Crisis Intelligence Center
 - Docker
 - AWS / Azure / GCP
 
----
 
-## 📊 Project Objectives
+##  Project Objectives
 
 - Predict disaster events before they occur
 - Identify high-risk geographical regions
@@ -86,18 +65,3 @@ Dashboard & Crisis Intelligence Center
 - Enable real-time disaster intelligence
 - Support data-driven crisis management
 
----
-
-## 🔮 Future Enhancements
-
-- AI Rescue Route Optimization
-- Drone-Based Damage Assessment
-- LLM-Powered Crisis Assistant
-- Social Media Disaster Intelligence
-- Multi-Disaster Forecasting Engine
-
----
-
-## 📜 License
-
-This project is developed for educational, research, and innovation purposes.
